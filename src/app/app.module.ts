@@ -7,11 +7,15 @@ import { AppComponent } from './app.component';
 import { NotFoundComponent } from './not-found.component';
 import { AboutComponent } from './about/about.component';
 import { ReadfileComponent } from './readfile/readfile.component';
+import { Fileinfo } from './readfile/fileinfo';
+
+import { ReadfileService } from './readfile/readfile.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { PaginationComponent } from './readfile/pagination.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,8 @@ import { FooterComponent } from './footer/footer.component';
     NotFoundComponent,
     NavbarComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +34,7 @@ import { FooterComponent } from './footer/footer.component';
     CommonModule,
     HttpModule
   ],
-  providers: [],
+  providers: [ReadfileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,61 @@
-<p>
-  readfile works!
-</p>
+<!--div>
+  <form #readfile="ngFrom">
+    <div class="form-group">
+      <input  type="text" 
+        id="filename" 
+        placeholder="path/to/file"
+        required 
+        name="filename" 
+        #filename='ngModel'
+        [(ngModel)]="readfile.content"
+      >
+    </div>
+  </form>
+</div-->
+
+<div>
+  {{ file1.status }} 
+  {{ file1.fileName }} 
+  {{ file1.totalPage }}
+  <div class="container">
+    <ol class="list-group">
+      <li *ngFor="let fileline of file_content" class="list-group-item">
+           {{ fileline }}
+      </li>
+    </ol>
+  </div>
+</div>
+<!--div class="nav">
+    <app-pagination [items]="fileline" (page-changed)="onPageChanged($event)"></app-pagination>
+</div-->
+
+<!--div class="row">
+    <div id="postlist" [class.extraclass]="hidediv" class="container col-md-7">     
+        <div class="nav">
+        <app-pagination [items]="filearr" (page-changed)="onPageChanged($event)"></app-pagination>
+        </div>
+        <div class="container">
+        <ul class="list-group">
+            <li *ngFor="let post of pagedPosts" class="list-group-item"
+             [class.active]="currentPost == post" (click)="select(post)"  >
+             Post no. {{ post.id }} : {{ post.title }}
+            </li>
+        </ul>
+    </div>
+    </div>
+
+    <div id="postbody" [class.extraclass]="!hidediv" class="container col-md-7">
+        <div class="mybtn">
+        <a class="btn " (click)="goback()"> <i class="material-icons">undo</i> Back To Posts List</a>
+    </div>
+        <div *ngIf="currentPost" class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Post no. {{ currentPost.id }} : {{ currentPost.title }}</h3>
+            </div>
+            <div class="panel-body">
+                <p>{{ currentPost.body }}</p>
+                <hr/>
+            </div>
+        </div>
+     </div>
+</div-->
