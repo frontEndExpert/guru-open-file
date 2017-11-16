@@ -1,34 +1,40 @@
-
-<app-readfile-form (msgEvent)="loadpage2($event)"></app-readfile-form>
-{{fileName}}
-<div>
-  <div class="container">
-        <table class="table table-striped table-bordered">
-                <tr *ngFor="let line of linesInPage">
-                  <td>{{this.allItems['content'].indexOf(line)+1}}</td>
-                  <td>{{line}}</td>
-                </tr>
-              </table>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <app-readfile-form (msgEvent)="loadpage2($event)"></app-readfile-form>
+      {{fileName}}/{{pageno}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <table class="table table-striped table-bordered ">
+        <tr *ngFor="let line of linesInPage">
+          <td>{{this.allItems['content'].indexOf(line)+1}}</td>
+          <td>{{line}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <!-- pager - split the array to display page by page with buttons controls -->
+      <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+        <li [ngClass]="{disabled:pager.currentPage === 1}">
+          <a (click)="setPage(1)">First</a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === 1}">
+          <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+        </li>
+        <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+          <a (click)="setPage(page)">{{page}}</a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+          <a (click)="setPage(pager.currentPage + 1)">Next</a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+          <a (click)="setPage(pager.totalPages)">Last</a>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
-
-<div class="container">
-            <!-- pager - split the array to display page by page with buttons controls -->
-            <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
-                <li [ngClass]="{disabled:pager.currentPage === 1}">
-                    <a (click)="setPage(1)">First</a>
-                </li>
-                <li [ngClass]="{disabled:pager.currentPage === 1}">
-                    <a (click)="setPage(pager.currentPage - 1)">Previous</a>
-                </li>
-                <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
-                    <a (click)="setPage(page)">{{page}}</a>
-                </li>
-                <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-                    <a (click)="setPage(pager.currentPage + 1)">Next</a>
-                </li>
-                <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-                    <a (click)="setPage(pager.totalPages)">Last</a>
-                </li>
-            </ul>
-        </div>

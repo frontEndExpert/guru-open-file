@@ -1,26 +1,28 @@
-<!--  [(ngModel)]="fname" #fname       -->
-<div *ngIf="!fname; else forminfo">
-  <div class="row">
-      <div class="col-md-12 well">
-        <form [formGroup]="rform" (ngSubmit)="readFile(rform.value)">
-            <div class="form-group">
-                <label for="fname">File Name</label>
-                <input type="text" class="form-control"
-                formControlName="fname" 
-                required
-                minlength="3"
-                >
-                <div *ngIf="!rform.controls['fname'].valid && rform.controls['fname'].touched" class="alert alert-danger">
-                    Please type a valid file name.
-                </div>
-            </div>
 
-            <button [disabled]="!rform.valid" type="submit" class="btn btn-primary">
-                Save
-            </button>
+<div *ngIf="!fname; else forminfo">
+    <div class="row">
+        <form [formGroup]="rform" (ngSubmit)="readFile(rform.value)">
+            <div class="col-sm-10 ">
+              <div class="form-group">
+                  <label for="fname">File Name</label>
+                  <input type="text" class="form-control"
+                  formControlName="fname" 
+                  required
+                  minlength="3"
+                  >
+                  <div *ngIf="!rform.controls['fname'].valid && rform.controls['fname'].touched" class="alert alert-danger">
+                      Please type a valid file name.
+                  </div>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <br>
+              <button [disabled]="!rform.valid" type="submit" class="btn btn-primary">
+                  Save
+              </button>
+            </div>
         </form>
-      </div>
-  </div>
+    </div>
 </div>
 
   <ng-template #forminfo>

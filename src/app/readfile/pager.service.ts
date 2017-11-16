@@ -4,13 +4,15 @@ import * as _ from 'underscore';
 
 @Injectable()
 export class Pagerservice {
+    pageSize: string = "10";
+
       getPager(totalLines: number, currentPage: number = 1 ) {
           // calculate total pages
           let startPage: number, endPage: number, totalPages: number;
-          let pageSize: number = 3;
+          let pagesize = Number(this.pageSize);
 
-          if (totalLines >= pageSize) {
-                totalPages = Math.ceil(totalLines / pageSize);
+          if (totalLines >= pagesize) {
+                totalPages = Math.ceil(totalLines / pagesize);
           }
           else {
               totalPages = 1;
@@ -19,8 +21,8 @@ export class Pagerservice {
            endPage = totalPages;
 
           // calculate start and end item indexes
-          let startIndex = (currentPage - 1) * pageSize;
-          let endIndex = Math.min(startIndex + pageSize - 1, totalLines - 1);
+          let startIndex = (currentPage - 1) * pagesize;
+          let endIndex = Math.min(startIndex + pagesize - 1, totalLines - 1);
   
           // create an array of pages to ng-repeat in the pager control
           let pages = _.range(startPage, endPage + 1);
@@ -33,7 +35,7 @@ export class Pagerservice {
           return {
               totalLines: totalLines,
               currentPage: currentPage,
-              pageSize: pageSize,
+              pagesize: pagesize,
               totalPages: totalPages,
               startPage: startPage,
               endPage: endPage,

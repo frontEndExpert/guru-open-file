@@ -13,12 +13,6 @@ export class ReadfileService {
 
   constructor(private _http: Http) { }
 
-  /*getFile(filename, pageno) {
-    var url = this._urlbase + "/read-file/" + filename + "/page/" + pageno;       
-    return this._http.get(url)
-      .map(res => res.json());
-  }*/
-
   getFiles(filename: string, pageno: string): Observable<Fileinfo[]> {
     console.log("fn=" + filename);
     var url = this.filebrowserUrl + "/fileName/" + filename + "/page/" + pageno;  
@@ -33,11 +27,6 @@ export class ReadfileService {
     return this._http.get(url + '.json');
   }
 
-/* 	getProposals(): Observable<Fileinfo[]> {
-		return this.http.get(this._urlbase)
-										.map((response: Response) => <Fileinfo[]>response.json())
-										.catch(this.handleError);
-	} */
 
   private handleError (error: Response | any) {
     // In a real world app, we might use a remote logging infrastructure
