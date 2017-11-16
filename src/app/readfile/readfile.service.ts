@@ -8,8 +8,8 @@ import { Fileinfo } from './fileinfo';
 
 @Injectable()
 export class ReadfileService {
-//  http://yourhost:8081/read-file/fileName/:fileName/page/:page
-  private filebrowserUrl = "http://yourhost:8081/read-file/";
+//  http://localhost:8081/read-file/fileName/:fileName/page/:page
+  private filebrowserUrl = "http://localhost:8081/read-file";
 
   constructor(private _http: Http) { }
 
@@ -19,9 +19,11 @@ export class ReadfileService {
       .map(res => res.json());
   }*/
 
-  getFiles(filename: string, pageno: number): Observable<Fileinfo[]> {
-    var url = this.filebrowserUrl + "/read-file/" + filename + "/page/" + pageno;  
-		return this._http.get(url)
+  getFiles(filename: string, pageno: string): Observable<Fileinfo[]> {
+    console.log("fn=" + filename);
+    var url = this.filebrowserUrl + "/fileName/" + filename + "/page/" + pageno;  
+    //console.log("url="+url);
+    return this._http.get(url)
 										.map((response: Response) => <Fileinfo[]>response.json())
 										.catch(this.handleError);
   } 
