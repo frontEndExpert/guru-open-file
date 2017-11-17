@@ -17,25 +17,28 @@ export class ReadfileFormComponent {
   filename: string = '';
   post:any;
 
+  // sending filename to the parent component/view
   @Output() msgEvent = new EventEmitter<string>();
 
-  //filenameForm = new FormGroup ({
-  //  fname: new FormControl()
-  //});
 
   constructor(
     //fb: FormBuilder,
     private fb: FormBuilder,
     private _readfileService: ReadfileService
-  ) {
-  // this.rform = new FormGroup()
-    this.rform = fb.group({
+  ) {  }
+
+  ngOnInit() {
+// declaring the form inputs and validations
+    this.rform = this.fb.group({
       fname: ['', Validators.compose([Validators.required, Validators.minLength(5), FilenameValidator.notValidFileName])]
-      //filename: ,['', Validators.required],
     });
-    
   }
 
+
+  ngOnChanges(){
+    this.rform.updateValueAndValidity();
+  }
+  // function to proccess the form 
   readFile(post){
     this.filename = post.fname;
     this.msgEvent.emit(this.filename)
