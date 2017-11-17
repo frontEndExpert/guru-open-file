@@ -35,9 +35,6 @@ export class ReadfileFormComponent {
   }
 
 
-  ngOnChanges(){
-    this.rform.updateValueAndValidity();
-  }
   // function to proccess the form 
   readFile(post){
     this.filename = post.fname;
