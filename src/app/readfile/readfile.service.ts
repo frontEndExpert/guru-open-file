@@ -10,17 +10,19 @@ import { Fileinfo } from './fileinfo';
 export class ReadfileService {
 //  http://localhost:8081/read-file/fileName/:fileName/page/:page
   private filebrowserUrl = "http://localhost:8081/read-file";
+  allpagedata: any;
 
   constructor(private _http: Http) { }
 
-  getFiles(filename: string, pageno: string): Observable<Fileinfo[]> {
-    console.log("fn=" + filename);
+  getFiles(filename?: string, pageno?: string): Observable<Fileinfo[]>{
+    //let allpagedata: any;
+    
     var url = this.filebrowserUrl + "/fileName/" + filename + "/page/" + pageno;  
-    //console.log("url="+url);
+    console.log("url=" + url);
     return this._http.get(url)
-										.map((response: Response) => <Fileinfo[]>response.json())
-										.catch(this.handleError);
-  } 
+                    .map(res =>  <Fileinfo[]>res.json())
+                    .catch(this.handleError)
+  }
 
   getFile(filename: string, pageno: number) {
     var url = this.filebrowserUrl + "/read-file/" + filename + "/page/" + pageno; 

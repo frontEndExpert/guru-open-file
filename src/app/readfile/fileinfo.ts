@@ -9,10 +9,10 @@ error = message in case status is not 200 */
 
 export class Fileinfo {
     constructor(
-    public status: number,
+    public page: string,
     public fileName?: string,
-    public page: string = "1",
     public totalPage?: number,
-    public content?: string[]
+    public content?: string[],
+    public status?: number
     ) {}
 }

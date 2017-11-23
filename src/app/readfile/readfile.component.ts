@@ -19,32 +19,41 @@ import { ReadfileFormComponent } from './readfile-form.component';
   providers: [ReadfileService]
 })
 export class ReadfileComponent implements OnInit{
-
-  constructor(  private fileService: ReadfileService,
-    private pagerService: Pagerservice
-  ) { }
-
-  private allItems: any[];
+  allItems: any[];
+  pageinfo: Fileinfo[];
+  errorMessage: string;
+  mode = "Observable";
+  
     // pager object
-  pager: any = {};
+  //pager: any = {};
     // paged items
-  allpages: string[];
+  allpages: string;
   pagedItems: any[];
   linesInPage: string[];
 
   fileName: string = "largefile.txt";
   pageno: string = "1";
 
+constructor(  private fileService: ReadfileService,
+    private pagerService: Pagerservice
+  ) { this.pageno = "1"; }
+
     ngOnInit() {
-          this.loadpages();
+      this.pageno = "1"; 
+      let timer = Observable.timer(0,5000);
+      timer.subscribe(() => this.loadpages()) ; 
+      
     }
     //smallfile.txt/page/1
     loadpages(){
       this.fileService.getFiles(this.fileName, this.pageno)
-              .subscribe(allpages => {
-              this.allItems = allpages; // set items to json response
-              this.setPage(1); // initialize to page 1
-      });
+              .subscribe( allItems => 
+                { this.pageinfo = allItems;
+                  this.allpages = allItems['content'];
+                error => this.errorMessage = <any>error // set items to json response
+                });
+
+      console.log('this.fileName=' + this.fileName +" p=" + this.pageno);
     }
     //form_filename;
 
@@ -60,14 +69,9 @@ export class ReadfileComponent implements OnInit{
     }
 
     setPage(page: number) {
-        if (page < 1 || page > this.pager.totalPages) {
-            return;
-        }
-        // get pager object from service
-        this.pager = this.pagerService.getPager(this.allItems['content'].length, page);
-        // get current page of items    
-        this.linesInPage = this.allItems['content'].slice(this.pager.startIndex, this.pager.endIndex + 1);
-        this.pagedItems = this.pager.pages.slice(this.pager.startIndex, this.pager.endIndex + 1);
-    }
+        this.pageno = String(page);
+        this.loadpages();
+        this.allpages = this.pageinfo['content'];
+     }
 }
 
