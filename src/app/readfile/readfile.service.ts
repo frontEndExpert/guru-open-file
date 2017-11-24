@@ -20,7 +20,7 @@ export class ReadfileService {
     var url = this.filebrowserUrl + "/fileName/" + filename + "/page/" + pageno;  
     console.log("url=" + url);
     return this._http.get(url)
-                    .map(res =>  <Fileinfo[]>res.json())
+                    .map(res =>  <Fileinfo>res.json())
                     .catch(this.handleError)
   }
 
