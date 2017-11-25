@@ -6,7 +6,6 @@ import { Observable } from 'rxjs/Rx';
 
 import * as _ from 'underscore';
 
-import { Pagerservice } from './pager.service';
 import { ReadfileService } from './readfile.service';
 import { Fileinfo } from './fileinfo';
 import { ReadfileFormComponent } from './readfile-form.component';

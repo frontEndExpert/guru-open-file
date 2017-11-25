@@ -24,11 +24,11 @@
     <div class="col-sm-12">
       <!-- buttons controls ; let i = index {{this.pageinfo['page']}} XX{{  this.pageinfo['totalPage']}}-->
       <div class="container">
-        <button type="button" class="btn btn-primary" [disabled]="(this.pageinfo['page'] == 1)" (click)="setPage(1)">First</button>
-        <button type="button" class="btn btn-primary" [disabled]="(this.pageinfo['page'] == 1)" (click)="setPage(+(this.pageinfo['page']) - 1)">Previous</button>
+        <button type="button" class="btn btn-primary" [disabled]="(this.pageinfo['page'] == 1)" (click)="setPage(1)"><i class="glyphicon glyphicon-fast-backward"></i> First</button>
+        <button type="button" class="btn btn-primary" [disabled]="(this.pageinfo['page'] == 1)" (click)="setPage(+(this.pageinfo['page']) - 1)"><i class="glyphicon glyphicon-step-backward"></i> Previous</button>
         <span class="button">Page: {{this.pageinfo['page']}}</span>
-        <button type="button" class="btn btn-primary" [disabled]="(this.pageinfo['page'] == this.pageinfo['totalPage'])" (click)="setPage(sum(this.pageinfo['page'],1))">Next</button>
-        <button type="button" class="btn btn-primary" [disabled]="(this.pageinfo['page'] == this.pageinfo['totalPage'])" (click)="setPage(this.pageinfo['totalPage'])">Last</button>
+        <button type="button" class="btn btn-primary" [disabled]="(this.pageinfo['page'] == this.pageinfo['totalPage'])" (click)="setPage(sum(this.pageinfo['page'],1))">Next <i class="glyphicon glyphicon-step-forward"></i></button>
+        <button type="button" class="btn btn-primary" [disabled]="(this.pageinfo['page'] == this.pageinfo['totalPage'])" (click)="setPage(this.pageinfo['totalPage'])">Last <i class="glyphicon glyphicon-fast-forward"></i></button>
       </div>
     </div>
   </div>

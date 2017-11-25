@@ -1,0 +1,36 @@
+.navbar-custom {
+    color: #FFFFFF;
+    background-color: #113388;
+    text-decoration: none;
+}
+
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: #000;  /*Sets the text hover color on navbar*/
+    }
+
+.navbar-default .navbar-nav > li > a {
+        color: white; /*Change active text color here*/
+    }
+    
+.navbar-default .navbar-nav > .active > a, 
+.navbar-default .navbar-nav > .active >  a:hover, 
+.navbar-default .navbar-nav > .active > a:focus {
+    color: white; /*BACKGROUND color for active*/
+    background-color: #113388;
+    }
+    
+.navbar-default {
+        background-color: #113388;
+        border-color: #030033;
+    }
+    
+.nav > li > a:hover,
+.nav > li > a:focus {
+        text-decoration: none;
+        background-color: lightcyan; /*Change rollover cell color here*/
+    }
+    
+    
+    
+        

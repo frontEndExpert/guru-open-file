@@ -34,6 +34,11 @@ export class ReadfileFormComponent {
     });
   }
 
+  onKey(event:any){
+    console.log(String(event));
+    this.rform.controls['fname'].updateValueAndValidity();
+    if (this.rform.valid){this.readFile(this.rform.value)}
+  }
 
   // function to proccess the form 
   readFile(post){
