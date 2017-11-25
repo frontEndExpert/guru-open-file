@@ -2,7 +2,12 @@
   <div class="row">
     <div class="col-sm-12">
       <app-readfile-form (msgEvent)="loadpage2($event)"></app-readfile-form>
-      {{fileName}}/{{pageno}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <h3>Filename: <b>{{this.pageinfo['fileName']}}</b> <br>
+        Page number:<b>{{this.pageinfo['page']}}</b></h3>
     </div>
   </div>
   <div class="row">
@@ -17,11 +22,11 @@
   </div>
   <div class="row">
     <div class="col-sm-12">
-      <!-- buttons controls ; let i = index-->
-      {{this.pageinfo['page']}} XX{{  this.pageinfo['totalPage']}}
+      <!-- buttons controls ; let i = index {{this.pageinfo['page']}} XX{{  this.pageinfo['totalPage']}}-->
       <div class="container">
         <button type="button" class="btn btn-primary" [disabled]="(this.pageinfo['page'] == 1)" (click)="setPage(1)">First</button>
         <button type="button" class="btn btn-primary" [disabled]="(this.pageinfo['page'] == 1)" (click)="setPage(+(this.pageinfo['page']) - 1)">Previous</button>
+        <span class="button">Page: {{this.pageinfo['page']}}</span>
         <button type="button" class="btn btn-primary" [disabled]="(this.pageinfo['page'] == this.pageinfo['totalPage'])" (click)="setPage(sum(this.pageinfo['page'],1))">Next</button>
         <button type="button" class="btn btn-primary" [disabled]="(this.pageinfo['page'] == this.pageinfo['totalPage'])" (click)="setPage(this.pageinfo['totalPage'])">Last</button>
       </div>

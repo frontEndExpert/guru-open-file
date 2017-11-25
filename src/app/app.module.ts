@@ -17,7 +17,6 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 
 import { ReadfileService } from './readfile/readfile.service';
-import { Pagerservice } from './readfile/pager.service';
 import { ReadfileFormComponent } from './readfile/readfile-form.component';
 
 @NgModule({
@@ -39,7 +38,7 @@ import { ReadfileFormComponent } from './readfile/readfile-form.component';
     ReactiveFormsModule,
     HttpModule
   ],
-  providers: [ReadfileService,Pagerservice],
+  providers: [ReadfileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

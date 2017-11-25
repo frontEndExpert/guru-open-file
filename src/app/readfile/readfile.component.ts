@@ -34,15 +34,10 @@ export class ReadfileComponent implements OnInit{
   fileName: string = "largefile.txt";
   pageno: string = "1";
 
-constructor(  private fileService: ReadfileService,
-    private pagerService: Pagerservice
-  ) { this.pageno = "1"; }
+constructor(  private fileService: ReadfileService ) { }
 
     ngOnInit() {
-      this.pageno = "1"; 
-      let timer = Observable.timer(0,5000);
-      timer.subscribe(() => this.loadpages()) ; 
-      
+      this.loadpages(); 
     }
     //smallfile.txt/page/1
     loadpages(){
@@ -61,16 +56,17 @@ constructor(  private fileService: ReadfileService,
       return +num1 + +num2;
     }
 
-    loadpage2($event){
+     loadpage2($event){
       this.fileName = $event;
       this.pageno = "1";
       this.loadpages();
     }
+/*    
     loadpage(filename: string){
       //console.log("fn=" + this.pageno);
       this.fileName = filename;
       this.loadpages();
-    }
+    } */
 
     setPage(page: number) {
         this.pageno = String(page);
