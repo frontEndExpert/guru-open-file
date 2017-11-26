@@ -17,28 +17,20 @@ import { ReadfileFormComponent } from './readfile-form.component';
   styleUrls: ['./readfile.component.css'],
   providers: [ReadfileService]
 })
-export class ReadfileComponent implements OnInit{
+export class ReadfileComponent {
   allItems: any[];
   pageinfo: {} = Fileinfo;
   errorMessage: string;
-  mode = "Observable";
-  
-    // pager object
-  //pager: any = {};
-  one = "1";
+//  mode = "Observable";
   pageLines: string;
-  pagedItems: any[];
-  linesInPage: string[];
-
-  fileName: string = "largefile.txt";
+  fileName: string;
   pageno: string = "1";
 
 constructor(  private fileService: ReadfileService ) { }
 
-    ngOnInit() {
-      this.loadpages(); 
-    }
-    //smallfile.txt/page/1
+    
+    //smallfile.txt/page/1 loading file page data from the json API
+    // API does not include file path.
     loadpages(){
       this.fileService.getFiles(this.fileName, this.pageno)
               .subscribe( allItems => 
@@ -49,24 +41,18 @@ constructor(  private fileService: ReadfileService ) { }
 
       console.log('this.fileName=' + this.fileName +" p=" + this.pageno);
     }
-    //form_filename;
 
+    //adding 2 strings as numbers with unary oporator;
     sum(num1, num2): number{
       return +num1 + +num2;
     }
-
+    // function to transfer data from child component form
      loadpage2($event){
       this.fileName = $event;
       this.pageno = "1";
       this.loadpages();
     }
-/*    
-    loadpage(filename: string){
-      //console.log("fn=" + this.pageno);
-      this.fileName = filename;
-      this.loadpages();
-    } */
-
+    // function to control the page displayed. load new page.
     setPage(page: number) {
         this.pageno = String(page);
         this.loadpages();
