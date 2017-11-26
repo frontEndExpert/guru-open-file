@@ -34,12 +34,22 @@ export class ReadfileFormComponent {
     });
   }
 
-  onKey(event:any){
-    console.log(String(event));
-    this.rform.controls['fname'].updateValueAndValidity();
-    if (this.rform.valid){this.readFile(this.rform.value)}
+  onKey(myevent:any){
+    console.log(String(myevent));
+    if(myevent.keyCode === 13){
+      this.rform.controls['fname'].updateValueAndValidity();
+      if (this.rform.valid){
+        this.readFile(this.rform.value);
+        console.log("Valid");
+      }
+      else { 
+        console.log("not valid");
+        this.rform.controls['fname'].markAsTouched();
+      }
+    }
+    else { console.log("not enter");
   }
-
+  }
   // function to proccess the form 
   readFile(post){
     this.filename = post.fname;

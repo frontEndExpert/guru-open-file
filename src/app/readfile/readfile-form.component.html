@@ -4,29 +4,33 @@
         <div class="row">
             <div class="col-sm-10">Please select your File Name from the list of 3: (file.txt, smallfile.txt, largefile.txt)</div>
         </div>
-    <div class="row">
+    
         <form [formGroup]="rform" (ngSubmit)="readFile(rform.value)" (keydown.enter)="rform.valid?readFile(rform.value):rform.controls['fname'].updateValueAndValidity();">
-            <div class="col-sm-10 ">
-              <div class="form-group">
+        <div class="row">  
+                <div class="input-group">
                   <input type="text" class="form-control"
                   formControlName="fname" 
                   required
                   minlength="3"
-                  (onChange)="rform.controls['fname'].updateValueAndValidity();" 
-                  (keydown.enter)="rform.controls['fname'].updateValueAndValidity();" 
-                  (enter)="onKey($event)" 
+                  
+                  (keypress)="onKey($event)" 
                   >
-                  <div *ngIf="!rform.controls['fname'].valid && rform.controls['fname'].touched" class="alert alert-danger">
-                      Please type a valid file name: no spaces, minimum 3 characters with .txt ending.<br>
-                      for this mock up we use only 3 filenames: file.txt, smallfile.txt or largefile.txt
-                  </div>
-              </div>
+                  <span class="input-group-btn">
+                    <button [disabled]="!rform.valid" type="submit" class="btn btn-primary">
+                            Read File
+                    </button>
+                  </span>
+                </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">        
+                  <div class="panel error">
+                    <div *ngIf="!rform.controls['fname'].valid && rform.controls['fname'].touched" class="alert alert-danger">
+                        Please type a valid file name: no spaces, minimum 3 characters with .txt ending.<br>
+                        for this mock up we use only 3 filenames: file.txt, smallfile.txt or largefile.txt
+                    </div>
+                </div>
             </div>
-            <div class="col-sm-2">
-              <button [disabled]="!rform.valid" type="submit" class="btn btn-primary">
-                  Read File
-              </button>
-            </div>
+        </div>    
         </form>
-    </div>
 </div>

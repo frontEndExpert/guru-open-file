@@ -8,27 +8,19 @@ import { Fileinfo } from './fileinfo';
 
 @Injectable()
 export class ReadfileService {
-//  http://localhost:8081/read-file/fileName/:fileName/page/:page
+//  url base
   private filebrowserUrl = "http://localhost:8081/read-file";
-  allpagedata: any;
 
   constructor(private _http: Http) { }
 
+  // main function to fetch the json data
   getFiles(filename?: string, pageno?: string): Observable<Fileinfo[]>{
-    //let allpagedata: any;
-    
     var url = this.filebrowserUrl + "/fileName/" + filename + "/page/" + pageno;  
     console.log("url=" + url);
     return this._http.get(url)
                     .map(res =>  <Fileinfo>res.json())
                     .catch(this.handleError)
   }
-
-  getFile(filename: string, pageno: number) {
-    var url = this.filebrowserUrl + "/read-file/" + filename + "/page/" + pageno; 
-    return this._http.get(url + '.json');
-  }
-
 
   private handleError (error: Response | any) {
     // In a real world app, we might use a remote logging infrastructure

@@ -1,0 +1,27 @@
+/* resize button size based on screen size*/
+@media (max-width: 320px) {
+    .btn-responsive {
+      
+      font-size:90%;
+      padding: 4px 4px;
+    }
+  }
+  
+  @media (min-width: 320px) and (max-width: 410px) {
+    .btn-responsive {
+      font-size:100%;
+      padding: 4px 6px;
+    }
+  }
+
+  @media (min-width: 410px) and (max-width: 992px) {
+    .btn-responsive {
+      font-size:120%;
+      padding: 6px 12px;
+    }
+  }
+
+  .btn-group{
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
