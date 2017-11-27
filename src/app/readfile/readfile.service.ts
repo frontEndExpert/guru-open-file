@@ -15,6 +15,8 @@ export class ReadfileService {
 
   // main function to fetch the json data
   getFiles(filename?: string, pageno?: string): Observable<Fileinfo[]>{
+    //if (filename=='') filename="smallfile.txt";
+    //if (pageno=='') filename='1';
     var url = this.filebrowserUrl + "/fileName/" + filename + "/page/" + pageno;  
     console.log("url=" + url);
     return this._http.get(url)
