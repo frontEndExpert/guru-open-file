@@ -6,7 +6,7 @@ $ cd filebrowser-service
 $ node index.js
 
 then goto readfile folde
-$ cd readfile
+$ cd readfile-app
 $ npm start
 
 this will include the proxy to allow the use of the service from different port.
