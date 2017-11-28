@@ -2,17 +2,18 @@
 <!-- the form for filename input -->
 <div class="container">
         <div class="row">
-            <div class="col-sm-10">Please select your File Name from the list of 3: (file.txt, smallfile.txt, largefile.txt)</div>
+            <div class="col-sm-10">Please select your File Name from the list 
+                of 3: (<a href="#" type="button" (click)="enterValue('file.txt')">file.txt</a>, <a href="#" type="button" (click)="enterValue('smallfile.txt')">smallfile.txt</a>, <a href="#" type="button" (click)="enterValue('largefile.txt')">largefile.txt</a>)</div>
         </div>
     
         <form [formGroup]="rform" (ngSubmit)="readFile(rform.value)" (keydown.enter)="rform.valid?readFile(rform.value):rform.controls['fname'].updateValueAndValidity();">
         <div class="row">  
                 <div class="input-group">
                   <input type="text" class="form-control"
+                  #fname 
                   formControlName="fname" 
                   required
                   minlength="3"
-                  
                   (keypress)="onKey($event)" 
                   >
                   <span class="input-group-btn">

@@ -49,6 +49,12 @@ export class ReadfileFormComponent {
         }
     }
   }
+
+enterValue(val1: string){
+  this.rform.controls['fname'].setValue(val1);
+  this.rform.controls['fname'].markAsTouched();
+}
+
   // function to proccess the form 
   readFile(post){
     this.filename = post.fname;
